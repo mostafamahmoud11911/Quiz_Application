@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import "./variables.scss";
+@import "./responsive.scss";
+
+* {
+  font-family: "Nunito", sans-serif;
+  box-sizing: border-box;
+}
+
+.active {
+  // background-color: #0092471a !important;
+
+  .ps-menu-label {
+    color: white !important;
+  }
+}
+
+.ps-sidebar-root {
+  border: 1px solid #c0c0c0 !important;
+}
+
+.design {
+  width: 20rem !important;
+}
+
+.loader {
+  position: relative;
+  font-size: 48px;
+  letter-spacing: 2px;
+}
+.loader:before {
+  content: "Loading";
+  color: #000000;
+}
+.loader:after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #ff4e08;
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  top: -70px;
+  animation: motion 3s ease-in-out infinite;
+}
+
+@keyframes motion {
+  0%,
+  50%,
+  100% {
+    transform: translateX(0) scale(1);
+  }
+  25% {
+    transform: translateX(-100px) scale(0.3);
+  }
+  75% {
+    transform: translateX(100px) scale(0.3);
+  }
+}
+.modalDeleteBtn {
+  background-color: #752626fd;
+  font-weight: 550;
+
+  &:hover {
+    color: #ffffff;
+    background-color: rgb(255, 93, 93);
+    box-shadow: rgba(79, 0, 0, 0.663) 0px -50px 36px -28px inset;
+    transform: scaleX(1.01);
+    font-weight: 500;
+    transition: box-shadow 1s ease, transform 1s ease, background-color 1s,
+      color 1s ease, font-weight 0.3s ease;
+  }
+
+  transition: box-shadow 1s ease, transform 1s ease;
+}
+.modalBtn {
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+
+  &:hover {
+    color: #000;
+    background-color: white;
+    box-shadow: rgba(165, 165, 165, 0.663) 0px -50px 36px -28px inset;
+    transform: scaleX(1.01);
+    font-weight: 500;
+    transition: box-shadow 1s ease, transform 1s ease, background-color 1s,
+      color 1s ease, font-weight 0.3s ease;
+  }
+
+  transition: box-shadow 1s ease, transform 1s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-gray-700 {
+    --tw-bg-opacity: 1;
+  }
+}
+.quizBox {
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+
+  &:hover {
+    color: #000;
+    background-color: white;
+    box-shadow: rgba(165, 165, 165, 0.663) 0px -50px 36px -28px inset;
+    transform: scaleX(1.01);
+    font-weight: 500;
+    transition: box-shadow 1s ease, transform 1s ease, background-color 1s,
+      color 1s ease, font-weight 0.3s ease;
+    img {
+      transform: scale(1.02);
+    }
+  }
+  transition: box-shadow 1s ease, transform 1s ease;
+}
+
+.ps-menu-icon:first() {
+  width: 100% !important;
+}
+
+.h-16 .ps-menu-button {
+  height: 100% !important;
+}
+
+.link {
+  .ps-menu-button:hover {
+    background-color: #ffeddf !important;
+  }
+}
+
+.radioInput {
+  width: 20px;
+  height: 20px;
+}
+
+a[role="button"] {
+  padding: 5px 9.8px;
+}
+
+.slide-in {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  transform-origin: bottom;
+}
+
+.slide-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  transform-origin: top;
+}
+
+.menu {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu li {
+  position: absolute;
+  left: 0;
+  list-style: none;
+  transform: rotate(0deg) translateX(100px);
+  transform-origin: 130px;
+  transition: 0.5s;
+  transition-delay: calc(0.1s * var(--i));
+}
+
+.menu.active li {
+  transform: rotate(calc(360deg / 8 * var(--i)));
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  text-decoration: none;
+  font-size: 22px;
+  border-radius: 50%;
+  transform: rotate(calc(360deg / -8 * var(--i)));
+  transition: 1s;
+  color: transparent;
+  transition-delay: 0.5s;
+  filter: drop-shadow(0 0 2px var(--clr));
+}
+
+.menu.active a {
+  color: var(--clr);
+}
+
+.menu a::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--clr);
+  transform: rotate(calc(90deg * var(--i))) translate(0, 25px);
+  transition: width 0.5s, height 0.5s, transform 0.5s;
+  transition-delay: 0.5s, 1s, 1.5s;
+}
+
+.menu.active a::before {
+  width: 50px;
+  height: 50px;
+  background: #161616;
+  border: 2px solid var(--clr);
+  transform: rotate(calc(0 * var(--i)));
+  transition: transform 0.5s, height 0.5s, width 0.5s;
+  transition-delay: 0.5s, 1.5s, 1.5s;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 5px var(--clr));
+  rotate: 135deg;
+  -webkit-transition: transform 0.5s, height 0.5s, width 0.5s;
+  -moz-transition: transform 0.5s, height 0.5s, width 0.5s;
+  -ms-transition: transform 0.5s, height 0.5s, width 0.5s;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.menu.active li:hover a::before {
+  background: var(--clr);
+}
+
+.menu.active li:hover a svg {
+  color: white;
+}
+
+.menuToggle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 32px;
+  transition: 1.5s;
+}
+.menu.active .menuToggle {
+  transform: rotate(315deg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: clamp(0.9rem, 0.7rem + 0.5vw, 2rem);
+}
+
+a {
+  font-size: clamp(0.6rem, 0.6rem + 0.5vw, 1.8rem);
+}
+td,
+th,
+span,
+label {
+  font-size: clamp(0.75rem, 0.5rem + 0.5vw, 1.8rem);
+}
+
+.stepper {
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.7));
+}
+
+.inputWrapper:has(input[type="radio"]:checked) {
+  background-color: rgb(96 165 250);
+  color: white;
+  .char {
+    background-color: black;
+    color: white;
+  }
+}
